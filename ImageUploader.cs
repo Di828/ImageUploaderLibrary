@@ -6,10 +6,14 @@ namespace ImageUploaderLibrary
     {
         const string API_KEY = "87c3ecadba19d1394aa1664628ca71b9";
         /// <summary>
-        /// Загружает изображение в хранилище изображение imgBB
+        /// Загружает изображение в хранилище изображений imgBB
         /// </summary>
-        /// <param name="imagePath">Путь к файлу с изображением</param>
-        /// <returns>Возврощает ссылку на загруженное изображение</returns>
+        /// <param name="imagePath">Путь к файлу с загружаемым изображением</param>
+        /// <returns>
+        ///     UploadResult.Success = true   -  если удалось загрузить изображение и получить ссылку на него, false в противном случае
+        ///     UploadResult.Data     -    Ссылка на изображение, если Success = true и null если Success = false
+        ///     UploadResult.Message      -    Информация об ошибке если Success = false и null если Success = true
+        /// </returns>
         public static async Task<UploadResult<string>> UploadImageAsync(string imagePath)
         {
             var uploadResult = new UploadResult<string>();
